@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shop_ui/core/dependency_injection/di_container.dart';
 import 'package:shop_ui/core/enums/enum.dart';
 import 'package:shop_ui/core/global_widgets/snackbar.dart';
 import 'package:shop_ui/features/presentation/pages/login.dart';
@@ -17,6 +18,7 @@ class HomeDash extends StatefulWidget {
 }
 
 class _HomeDashState extends State<HomeDash> {
+  final DIContainer diContainer = DIContainer();
   late ShopBloc _shopBloc;
 
   @override
@@ -29,9 +31,10 @@ class _HomeDashState extends State<HomeDash> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ShopBloc, ShopState>(
+      bloc: _shopBloc,
       listener: _shopListener,
       builder: (context, state) {
-        if(state.stateStatus == StateStatus.loading) {
+        if (state.stateStatus == StateStatus.loading) {
           return const Center(
             child: CircularProgressIndicator(),
           );
@@ -135,101 +138,105 @@ class _HomeDashState extends State<HomeDash> {
                     height: 800,
                     width: 1400,
                     child: ListView.builder(
-                      itemCount: state.shopModel.length,
-                      padding: const EdgeInsets.only(top: 10),
-                      itemBuilder: (context, index) {
-                        final shoplist = state.shopModel[index];
-                        return Container(
-                        height: 100,
-                        width: 10,
-                        margin: const EdgeInsets.only(
-                            bottom: 15, right: 50, left: 50),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white70,
-                          boxShadow: const [
-                            BoxShadow(
-                                color: Colors.black38,
-                                blurRadius: 5.0,
-                                offset: Offset(0, 3))
-                          ],
-                        ),
-                        child: GestureDetector(
-                          onTap: () {
-                            // Your click event code here
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const ShopPage()));
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(50, 5, 50, 5),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              mainAxisSize: MainAxisSize.max,
-                              children: <Widget>[
-                                Expanded(
-                                  flex: 1,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(5),
-                                    child: Text(
-                                      shoplist.shopId,
-                                      style: GoogleFonts.ptSerif(
-                                        textStyle: const TextStyle(
-                                            color: Colors.brown,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      maxLines: 1,
-                                      softWrap: false,
-                                      overflow: TextOverflow.clip,
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 1,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(7),
-                                    child: Text(
-                                      shoplist.shopName,
-                                      style: GoogleFonts.ptSerif(
-                                        textStyle: const TextStyle(
-                                          color: Colors.brown,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      maxLines: 1,
-                                      softWrap: false,
-                                      overflow: TextOverflow.clip,
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 1,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(7),
-                                    child: Text(
-                                      shoplist.address1,
-                                      style: GoogleFonts.ptSerif(
-                                        textStyle: const TextStyle(
-                                            color: Colors.brown,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      maxLines: 1,
-                                      softWrap: false,
-                                      overflow: TextOverflow.clip,
-                                    ),
-                                  ),
-                                ),
+                        itemCount: state.shopModel.length,
+                        padding: const EdgeInsets.only(top: 10),
+                        itemBuilder: (context, index) {
+                          final shoplist = state.shopModel[index];
+                          return Container(
+                            height: 100,
+                            width: 10,
+                            margin: const EdgeInsets.only(
+                                bottom: 15, right: 50, left: 50),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.white70,
+                              boxShadow: const [
+                                BoxShadow(
+                                    color: Colors.black38,
+                                    blurRadius: 5.0,
+                                    offset: Offset(0, 3))
                               ],
                             ),
-                          ),
-                        ),
-                      );
-                      }
-                    ),
+                            child: GestureDetector(
+                              onTap: () {
+                                // Your click event code here
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => BlocProvider(
+                                              create: (context) => diContainer.branchBloc,
+                                              child: ShopPage(),
+                                            )));
+                              },
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.fromLTRB(50, 5, 50, 5),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: <Widget>[
+                                    Expanded(
+                                      flex: 1,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(5),
+                                        child: Text(
+                                          shoplist.shopId,
+                                          style: GoogleFonts.ptSerif(
+                                            textStyle: const TextStyle(
+                                                color: Colors.brown,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          maxLines: 1,
+                                          softWrap: false,
+                                          overflow: TextOverflow.clip,
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 1,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(7),
+                                        child: Text(
+                                          shoplist.shopName,
+                                          style: GoogleFonts.ptSerif(
+                                            textStyle: const TextStyle(
+                                              color: Colors.brown,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          maxLines: 1,
+                                          softWrap: false,
+                                          overflow: TextOverflow.clip,
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 1,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(7),
+                                        child: Text(
+                                          shoplist.address1,
+                                          style: GoogleFonts.ptSerif(
+                                            textStyle: const TextStyle(
+                                                color: Colors.brown,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          maxLines: 1,
+                                          softWrap: false,
+                                          overflow: TextOverflow.clip,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                        }),
                   ),
                 );
               })
