@@ -17,7 +17,7 @@ class _LoginPageState extends State<LoginPage> {
 
   final GlobalKey<FormState> _formKey = GlobalKey();
   final DIContainer diContainer = DIContainer();
-
+  bool _isObscure = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -107,13 +107,22 @@ class _LoginPageState extends State<LoginPage> {
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               controller: _passwordController,
-                              obscureText: true,
+                              obscureText: _isObscure,
                               decoration: InputDecoration(
                                   prefixIcon: const Icon(Icons.lock_open),
                                   border: InputBorder.none,
                                   hintText: "Password",
-                                  hintStyle:
-                                      TextStyle(color: Colors.grey[700])),
+                                  hintStyle: TextStyle(color: Colors.grey[700]),
+                                  suffixIcon: IconButton(
+                                    icon: Icon(_isObscure
+                                        ? Icons.visibility
+                                        : Icons.visibility_off),
+                                    onPressed: () {
+                                      setState(() {
+                                        _isObscure = !_isObscure;
+                                      });
+                                    },
+                                  )),
                             ),
                           )
                         ],
@@ -124,10 +133,27 @@ class _LoginPageState extends State<LoginPage> {
                     height: 30,
                   ),
                   ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromRGBO(40, 120, 19, 1),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10))),
+                    style: ButtonStyle(
+                                backgroundColor: MaterialStateColor.resolveWith(
+                                    (states) =>
+                                        const Color.fromRGBO(40, 120, 19, 1)),
+                                shape: MaterialStateProperty.resolveWith(
+                                    (states) => RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10))),
+                                overlayColor:
+                                    MaterialStateProperty.resolveWith<Color?>(
+                                  (Set<MaterialState> states) {
+                                    if (states.contains(MaterialState.hovered)) {
+                                      return Colors.red; //<-- SEE HERE
+                                    }
+                                     if (states.contains(MaterialState.pressed)) {
+                                      return const Color.fromRGBO(40, 120, 19, 1); //<-- SEE HERE
+                                    }
+                                    return null; // Defer to the widget's default.
+                                  },
+                                ),
+                              ),
                     child: SizedBox(
                       height: 50,
                       child: Center(
@@ -153,7 +179,8 @@ class _LoginPageState extends State<LoginPage> {
                               builder: (context) => BlocProvider(
                                     create: (context) => diContainer.shopBloc,
                                     child: const HomePage(),
-                                  )), ModalRoute.withName('/'));
+                                  )),
+                          ModalRoute.withName('/'));
                     },
                   ),
                   // const SizedBox(height: 10),

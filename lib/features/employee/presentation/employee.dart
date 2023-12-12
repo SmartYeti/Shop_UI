@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:shop_ui/features/branch/presentation/branchinfo.dart';
-import 'package:shop_ui/features/employee/presentation/employeeadd.dart';
-import 'package:shop_ui/features/branch/presentation/branchdash.dart';
+import 'package:shop_ui/features/employee/presentation/employeeinfo.dart';
 import 'package:shop_ui/features/presentation/pages/login.dart';
 // import 'package:shop_ui/features/presentation/pages/shopdash.dart';
 import 'package:sidebarx/sidebarx.dart';
 
-class BranchPage extends StatefulWidget {
- const BranchPage({super.key});
+class EmployeePage extends StatefulWidget {
+ const EmployeePage({super.key});
 
   @override
-  State<BranchPage> createState() => _SidebarXExampleAppState();
+  State<EmployeePage> createState() => _SidebarXExampleAppState();
 }
 
-class _SidebarXExampleAppState extends State<BranchPage> {
+class _SidebarXExampleAppState extends State<EmployeePage> {
   final _controller = SidebarXController(selectedIndex: 0, extended: true);
   
   final _key = GlobalKey<ScaffoldState>();
@@ -118,20 +116,20 @@ class _SidebarXExampleAppState extends State<BranchPage> {
               },
               items: [
                 SidebarXItem(
-                  icon: Icons.home,
-                  label: 'Home',
+                  icon: Icons.info,
+                  label: 'Info',
                   onTap: () {
                     // debugPrint('Home');
                   },
                 ),
-                const SidebarXItem(
-                  icon: Icons.add_circle,
-                  label: 'Add',
-                ),
-                const SidebarXItem(
-                  icon: Icons.info,
-                  label: 'Info',
-                ),
+                // const SidebarXItem(
+                //   icon: Icons.add_circle,
+                //   label: 'Add',
+                // ),
+                // const SidebarXItem(
+                //   icon: Icons.info,
+                //   label: 'Info',
+                // ),
               ],
               footerItems: [
                 SidebarXItem(
@@ -216,20 +214,20 @@ class _SidebarXExampleAppState extends State<BranchPage> {
                     },
                     items: [
                       SidebarXItem(
-                        icon: Icons.home,
-                        label: 'Home',
+                        icon: Icons.info,
+                        label: 'Info',
                         onTap: () {
                           // debugPrint('Home');
                         },
                       ),
-                      const SidebarXItem(
-                        icon: Icons.add_circle,
-                        label: 'Add',
-                      ),
-                      const SidebarXItem(
-                        icon: Icons.info,
-                        label: 'Info',
-                      ),
+                      // const SidebarXItem(
+                      //   icon: Icons.add_circle,
+                      //   label: 'Add',
+                      // ),
+                      // const SidebarXItem(
+                      //   icon: Icons.info,
+                      //   label: 'Info',
+                      // ),
                     ],
                     footerItems: [
                       SidebarXItem(
@@ -390,13 +388,13 @@ class _ScreensExampleState extends State<_ScreensExample> {
         final pageTitle = _getTitleByIndex(widget.controller.selectedIndex);
         switch (widget.controller.selectedIndex) {
           case 0:
-            return const BranchDash();
+            return const InfoEmployeePage();
 
           case 1:
-            return const AddEmpPage();
+          
 
           case 2:
-           return const InfoBranchPage();
+          
 
           default:
             return Text(

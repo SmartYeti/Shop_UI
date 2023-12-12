@@ -13,7 +13,8 @@ class AddEmpPage extends StatefulWidget {
 class _AddEmpPageState extends State<AddEmpPage> {
   // final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
+  bool _isObscure = true;
+  bool _isObscure2 = true;
   final GlobalKey<FormState> _formKey = GlobalKey();
 
   @override
@@ -85,22 +86,24 @@ class _AddEmpPageState extends State<AddEmpPage> {
                                           // validator: (String? val) {
                                           //   return Guard.againstInvalidEmail(val, 'Email');
                                           // },
-                                          autovalidateMode:
-                                              AutovalidateMode.onUserInteraction,
+                                          autovalidateMode: AutovalidateMode
+                                              .onUserInteraction,
                                           // controller: _emailController,
                                           decoration: InputDecoration(
-                                              prefixIcon: const Icon(Icons.badge_rounded),
+                                              prefixIcon: const Icon(
+                                                  Icons.badge_rounded),
                                               border: InputBorder.none,
                                               hintText: "Employee ID",
-                                              hintStyle:
-                                                  TextStyle(color: Colors.grey[700])),
+                                              hintStyle: TextStyle(
+                                                  color: Colors.grey[700])),
                                         ),
                                       ),
                                     ),
                                   ],
                                 ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     SizedBox(
                                       width: screenSize.width / 5,
@@ -115,15 +118,16 @@ class _AddEmpPageState extends State<AddEmpPage> {
                                           // validator: (String? val) {
                                           //   return Guard.againstInvalidEmail(val, 'Email');
                                           // },
-                                          autovalidateMode:
-                                              AutovalidateMode.onUserInteraction,
+                                          autovalidateMode: AutovalidateMode
+                                              .onUserInteraction,
                                           // controller: _emailController,
                                           decoration: InputDecoration(
-                                              prefixIcon: const Icon(Icons.person),
+                                              prefixIcon:
+                                                  const Icon(Icons.person),
                                               border: InputBorder.none,
                                               hintText: "Last name",
-                                              hintStyle:
-                                                  TextStyle(color: Colors.grey[700])),
+                                              hintStyle: TextStyle(
+                                                  color: Colors.grey[700])),
                                         ),
                                       ),
                                     ),
@@ -140,15 +144,16 @@ class _AddEmpPageState extends State<AddEmpPage> {
                                           // validator: (String? val) {
                                           //   return Guard.againstInvalidEmail(val, 'Email');
                                           // },
-                                          autovalidateMode:
-                                              AutovalidateMode.onUserInteraction,
+                                          autovalidateMode: AutovalidateMode
+                                              .onUserInteraction,
                                           // controller: _emailController,
                                           decoration: InputDecoration(
-                                              prefixIcon: const Icon(Icons.person),
+                                              prefixIcon:
+                                                  const Icon(Icons.person),
                                               border: InputBorder.none,
                                               hintText: "First name",
-                                              hintStyle:
-                                                  TextStyle(color: Colors.grey[700])),
+                                              hintStyle: TextStyle(
+                                                  color: Colors.grey[700])),
                                         ),
                                       ),
                                     ),
@@ -165,22 +170,24 @@ class _AddEmpPageState extends State<AddEmpPage> {
                                           // validator: (String? val) {
                                           //   return Guard.againstInvalidEmail(val, 'Email');
                                           // },
-                                          autovalidateMode:
-                                              AutovalidateMode.onUserInteraction,
+                                          autovalidateMode: AutovalidateMode
+                                              .onUserInteraction,
                                           // controller: _emailController,
                                           decoration: InputDecoration(
-                                              prefixIcon: const Icon(Icons.person),
+                                              prefixIcon:
+                                                  const Icon(Icons.person),
                                               border: InputBorder.none,
                                               hintText: "Middle name",
-                                              hintStyle:
-                                                  TextStyle(color: Colors.grey[700])),
+                                              hintStyle: TextStyle(
+                                                  color: Colors.grey[700])),
                                         ),
                                       ),
                                     ),
                                   ],
                                 ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     SizedBox(
                                       width: screenSize.width / 5,
@@ -195,15 +202,16 @@ class _AddEmpPageState extends State<AddEmpPage> {
                                           // validator: (String? val) {
                                           //   return Guard.againstInvalidEmail(val, 'Email');
                                           // },
-                                          autovalidateMode:
-                                              AutovalidateMode.onUserInteraction,
+                                          autovalidateMode: AutovalidateMode
+                                              .onUserInteraction,
                                           // controller: _emailController,
                                           decoration: InputDecoration(
-                                              prefixIcon: const Icon(Icons.check_circle_rounded),
+                                              prefixIcon: const Icon(
+                                                  Icons.check_circle_rounded),
                                               border: InputBorder.none,
                                               hintText: "Status",
-                                              hintStyle:
-                                                  TextStyle(color: Colors.grey[700])),
+                                              hintStyle: TextStyle(
+                                                  color: Colors.grey[700])),
                                         ),
                                       ),
                                     ),
@@ -220,15 +228,16 @@ class _AddEmpPageState extends State<AddEmpPage> {
                                           // validator: (String? val) {
                                           //   return Guard.againstInvalidEmail(val, 'Email');
                                           // },
-                                          autovalidateMode:
-                                              AutovalidateMode.onUserInteraction,
+                                          autovalidateMode: AutovalidateMode
+                                              .onUserInteraction,
                                           // controller: _emailController,
                                           decoration: InputDecoration(
-                                              prefixIcon: const Icon(Icons.calendar_month_outlined),
+                                              prefixIcon: const Icon(Icons
+                                                  .calendar_month_outlined),
                                               border: InputBorder.none,
                                               hintText: "Date hired",
-                                              hintStyle:
-                                                  TextStyle(color: Colors.grey[700])),
+                                              hintStyle: TextStyle(
+                                                  color: Colors.grey[700])),
                                         ),
                                       ),
                                     ),
@@ -245,22 +254,24 @@ class _AddEmpPageState extends State<AddEmpPage> {
                                           // validator: (String? val) {
                                           //   return Guard.againstInvalidEmail(val, 'Email');
                                           // },
-                                          autovalidateMode:
-                                              AutovalidateMode.onUserInteraction,
+                                          autovalidateMode: AutovalidateMode
+                                              .onUserInteraction,
                                           // controller: _emailController,
                                           decoration: InputDecoration(
-                                              prefixIcon: const Icon(Icons.attach_money_outlined),
+                                              prefixIcon: const Icon(
+                                                  Icons.attach_money_outlined),
                                               border: InputBorder.none,
                                               hintText: "Salary",
-                                              hintStyle:
-                                                  TextStyle(color: Colors.grey[700])),
+                                              hintStyle: TextStyle(
+                                                  color: Colors.grey[700])),
                                         ),
                                       ),
                                     ),
                                   ],
                                 ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     SizedBox(
                                       width: screenSize.width / 5,
@@ -268,22 +279,35 @@ class _AddEmpPageState extends State<AddEmpPage> {
                                         decoration: const BoxDecoration(
                                             border: Border(
                                                 bottom: BorderSide(
-                                                    color: Color.fromRGBO(40, 120, 19, 1)))),
+                                                    color: Color.fromRGBO(
+                                                        40, 120, 19, 1)))),
                                         padding: const EdgeInsets.all(8.0),
                                         child: TextFormField(
                                           // validator: (String? val) {
                                           //   return Guard.againstEmptyString(
                                           //       val, 'Password');
                                           // },
-                                          autovalidateMode:
-                                              AutovalidateMode.onUserInteraction,
+                                          autovalidateMode: AutovalidateMode
+                                              .onUserInteraction,
                                           controller: _passwordController,
-                                          obscureText: true,
+                                          obscureText: _isObscure,
                                           decoration: InputDecoration(
-                                              prefixIcon: const Icon(Icons.lock_open),
+                                              prefixIcon:
+                                                  const Icon(Icons.lock_open),
                                               border: InputBorder.none,
                                               hintText: "Password",
-                                              hintStyle: TextStyle(color: Colors.grey[700])),
+                                              hintStyle: TextStyle(
+                                                  color: Colors.grey[700]),
+                                              suffixIcon: IconButton(
+                                                icon: Icon(_isObscure
+                                                    ? Icons.visibility
+                                                    : Icons.visibility_off),
+                                                onPressed: () {
+                                                  setState(() {
+                                                    _isObscure = !_isObscure;
+                                                  });
+                                                },
+                                              )),
                                         ),
                                       ),
                                     ),
@@ -293,22 +317,35 @@ class _AddEmpPageState extends State<AddEmpPage> {
                                         decoration: const BoxDecoration(
                                             border: Border(
                                                 bottom: BorderSide(
-                                                    color: Color.fromRGBO(40, 120, 19, 1)))),
+                                                    color: Color.fromRGBO(
+                                                        40, 120, 19, 1)))),
                                         padding: const EdgeInsets.all(8.0),
                                         child: TextFormField(
                                           // validator: (String? val) {
                                           //   return Guard.againstEmptyString(
                                           //       val, 'Password');
                                           // },
-                                          autovalidateMode:
-                                              AutovalidateMode.onUserInteraction,
-                                          controller: _passwordController,
-                                          obscureText: true,
+                                          autovalidateMode: AutovalidateMode
+                                              .onUserInteraction,
+                                          // controller: _passwordController,
+                                          obscureText: _isObscure2,
                                           decoration: InputDecoration(
-                                              prefixIcon: const Icon(Icons.lock),
+                                              prefixIcon:
+                                                  const Icon(Icons.lock),
                                               border: InputBorder.none,
                                               hintText: "Confirm password",
-                                              hintStyle: TextStyle(color: Colors.grey[700])),
+                                              hintStyle: TextStyle(
+                                                  color: Colors.grey[700]),
+                                              suffixIcon: IconButton(
+                                                icon: Icon(_isObscure2
+                                                    ? Icons.visibility
+                                                    : Icons.visibility_off),
+                                                onPressed: () {
+                                                  setState(() {
+                                                    _isObscure2 = !_isObscure2;
+                                                  });
+                                                },
+                                              )),
                                         ),
                                       ),
                                     ),
@@ -318,7 +355,8 @@ class _AddEmpPageState extends State<AddEmpPage> {
                                   ],
                                 ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     SizedBox(
                                       width: screenSize.width / 5,
@@ -333,15 +371,16 @@ class _AddEmpPageState extends State<AddEmpPage> {
                                           // validator: (String? val) {
                                           //   return Guard.againstInvalidEmail(val, 'Email');
                                           // },
-                                          autovalidateMode:
-                                              AutovalidateMode.onUserInteraction,
+                                          autovalidateMode: AutovalidateMode
+                                              .onUserInteraction,
                                           // controller: _emailController,
                                           decoration: InputDecoration(
-                                              prefixIcon: const Icon(Icons.note_add_rounded),
+                                              prefixIcon: const Icon(
+                                                  Icons.note_add_rounded),
                                               border: InputBorder.none,
                                               hintText: "Notes",
-                                              hintStyle:
-                                                  TextStyle(color: Colors.grey[700])),
+                                              hintStyle: TextStyle(
+                                                  color: Colors.grey[700])),
                                         ),
                                       ),
                                     ),
@@ -358,15 +397,16 @@ class _AddEmpPageState extends State<AddEmpPage> {
                                           // validator: (String? val) {
                                           //   return Guard.againstInvalidEmail(val, 'Email');
                                           // },
-                                          autovalidateMode:
-                                              AutovalidateMode.onUserInteraction,
+                                          autovalidateMode: AutovalidateMode
+                                              .onUserInteraction,
                                           // controller: _emailController,
                                           decoration: InputDecoration(
-                                              prefixIcon: const Icon(Icons.edit_calendar_rounded),
+                                              prefixIcon: const Icon(
+                                                  Icons.edit_calendar_rounded),
                                               border: InputBorder.none,
                                               hintText: "Remark",
-                                              hintStyle:
-                                                  TextStyle(color: Colors.grey[700])),
+                                              hintStyle: TextStyle(
+                                                  color: Colors.grey[700])),
                                         ),
                                       ),
                                     ),
@@ -376,8 +416,8 @@ class _AddEmpPageState extends State<AddEmpPage> {
                                   ],
                                 ),
                                 SizedBox(
-                                      height: screenSize.height / 20,
-                                    )
+                                  height: screenSize.height / 20,
+                                )
                               ],
                             ),
                           ),
@@ -390,10 +430,31 @@ class _AddEmpPageState extends State<AddEmpPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color.fromRGBO(40, 120, 19, 1),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10))),
+                            style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateColor.resolveWith(
+                                              (states) => const Color.fromRGBO(
+                                                  40, 120, 19, 1)),
+                                      shape: MaterialStateProperty.resolveWith(
+                                          (states) => RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10))),
+                                      overlayColor: MaterialStateProperty
+                                          .resolveWith<Color?>(
+                                        (Set<MaterialState> states) {
+                                          if (states.contains(
+                                              MaterialState.hovered)) {
+                                            return Colors.red; //<-- SEE HERE
+                                          }
+                                          if (states.contains(
+                                              MaterialState.pressed)) {
+                                            return const Color.fromRGBO(
+                                                40, 120, 19, 1); //<-- SEE HERE
+                                          }
+                                          return null; // Defer to the widget's default.
+                                        },
+                                      ),
+                                    ),
                             child: SizedBox(
                               width: screenSize.width / 4,
                               height: 50,

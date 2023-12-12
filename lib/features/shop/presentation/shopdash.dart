@@ -7,6 +7,7 @@ import 'package:shop_ui/core/enums/enum.dart';
 import 'package:shop_ui/core/global_widgets/snackbar.dart';
 import 'package:shop_ui/features/branch/domain/bloc/branch_bloc.dart';
 import 'package:shop_ui/features/shop/presentation/home.dart';
+// import 'package:shop_ui/features/shop/presentation/home.dart';
 
 import '../../branch/presentation/branch.dart';
 
@@ -30,33 +31,28 @@ class _ShopDashState extends State<ShopDash> {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
-    return BlocConsumer<BranchBloc, BranchState>(
-      listener: _branchListener,
-      builder: (context, state) {
-        if(state.stateStatus == StateStatus.loading) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-        return SingleChildScrollView(
+    return Column(
+      children: [
+        Container(
+          alignment: Alignment.topLeft,
+          child: IconButton(
+              // alignment: Alignment.topLeft,
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const HomePage()));
+              },
+              icon: const Icon(
+                Icons.arrow_back_ios_new_rounded,
+                size: 50,
+                color: Colors.grey,
+              )),
+        ),
+        const SizedBox(
+          height: 100,
+        ),
+        SingleChildScrollView(
           child: Column(
             children: [
-               Container(
-                
-                alignment: Alignment.topLeft,
-                child: IconButton(
-                    // alignment: Alignment.topLeft,
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) =>  
-                            const HomePage()));
-                      },
-                      icon: const Icon(
-                        Icons.arrow_back_ios_new_rounded,
-                        size: 50,
-                        color: Colors.grey,
-                      )),
-              ),
               FittedBox(
                 fit: BoxFit.scaleDown,
                 child: SizedBox(
@@ -64,29 +60,31 @@ class _ShopDashState extends State<ShopDash> {
                     '-SHOP NAME- DASHBOARD',
                     style: GoogleFonts.ptSerif(
                       textStyle: const TextStyle(
-                          color: Color.fromRGBO(40, 120, 19, 1),
-                          fontSize: 50,
-                          // letterSpacing: .5
-                          ),
+                        color: Color.fromRGBO(40, 120, 19, 1),
+                        fontSize: 50,
+                        // letterSpacing: .5
+                      ),
                     ),
                   ),
                 ),
               ),
-              const SizedBox(height: 20,),
+              const SizedBox(
+                height: 20,
+              ),
               _searchBar(context),
-              
-              
-              SizedBox(height: 20, 
-              width: screenSize.width/1.4,
-              child: const Divider(
-                thickness: 2,
-              )),
-    
+
+              SizedBox(
+                  height: 20,
+                  width: screenSize.width / 1.4,
+                  child: const Divider(
+                    thickness: 2,
+                  )),
+
               Container(
                 padding: const EdgeInsets.all(3),
                 alignment: Alignment.bottomCenter,
-                height: screenSize.width/4.5,
-                width: screenSize.width/1.4,
+                height: screenSize.width / 4.5,
+                width: screenSize.width / 1.4,
                 child: ScrollConfiguration(
                   behavior: ScrollConfiguration.of(context).copyWith(
                       dragDevices: {
@@ -96,18 +94,16 @@ class _ShopDashState extends State<ShopDash> {
                   child: ListView.builder(
                     physics: const AlwaysScrollableScrollPhysics(),
                     scrollDirection: Axis.horizontal,
-                    itemCount: state.branchModel.length,
+                    itemCount: 5,
                     padding: const EdgeInsets.only(top: 10),
-                    itemBuilder: (context, index) {
-                      final branchList = state.branchModel[index];
-                      return SizedBox(
+                    itemBuilder: (context, index) => SizedBox(
                       height: screenSize.height / 10,
-                          width: screenSize.width / 3.8,
+                      width: screenSize.width / 3.8,
                       child: Container(
                         // height: 1500,
                         // width: 500,
-                        margin:
-                            const EdgeInsets.only(bottom: 15, right: 20, left: 20),
+                        margin: const EdgeInsets.only(
+                            bottom: 15, right: 20, left: 20),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           color: Colors.white70,
@@ -129,7 +125,6 @@ class _ShopDashState extends State<ShopDash> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => const BranchPage()));
-    
                           },
                           child: FittedBox(
                             fit: BoxFit.scaleDown,
@@ -139,29 +134,25 @@ class _ShopDashState extends State<ShopDash> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 mainAxisSize: MainAxisSize.max,
                                 children: <Widget>[
-                                  SizedBox(
-                                    width: 300,
-                                    height: 80,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(3),
-                                      child: Text(
-                                        branchList.branchId,
-                                        style: GoogleFonts.ptSerif(
-                                          textStyle: const TextStyle(
-                                              color: Colors.brown,
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        maxLines: 1,
-                                        softWrap: false,
-                                        overflow: TextOverflow.clip,
+                                  Padding(
+                                    padding: const EdgeInsets.all(3),
+                                    child: Text(
+                                      'Branch-1',
+                                      style: GoogleFonts.ptSerif(
+                                        textStyle: const TextStyle(
+                                            color: Colors.brown,
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold),
                                       ),
+                                      maxLines: 1,
+                                      softWrap: false,
+                                      overflow: TextOverflow.clip,
                                     ),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.all(3),
                                     child: Text(
-                                      branchList.branchName,
+                                      'DOSC',
                                       style: GoogleFonts.ptSerif(
                                         textStyle: const TextStyle(
                                             color: Colors.brown,
@@ -179,7 +170,7 @@ class _ShopDashState extends State<ShopDash> {
                                   Padding(
                                     padding: const EdgeInsets.all(3),
                                     child: Text(
-                                      branchList.address1,
+                                      'Cebu City',
                                       style: GoogleFonts.ptSerif(
                                         textStyle: const TextStyle(
                                             color: Colors.brown,
@@ -194,7 +185,7 @@ class _ShopDashState extends State<ShopDash> {
                                   Padding(
                                     padding: const EdgeInsets.all(3),
                                     child: Text(
-                                      branchList.dateOpened,
+                                      '11-29-2023',
                                       style: GoogleFonts.ptSerif(
                                         textStyle: const TextStyle(
                                             color: Colors.brown,
@@ -212,15 +203,15 @@ class _ShopDashState extends State<ShopDash> {
                           ),
                         ),
                       ),
-                    );
-                    }
+                    ),
                   ),
                 ),
               ),
               // ),
             ],
-          ));
-      },
+          ),
+        ),
+      ],
     );
   }
 
@@ -232,54 +223,51 @@ class _ShopDashState extends State<ShopDash> {
 
   _searchBar(BuildContext context) {
     // var screenSize = MediaQuery.of(context).size;
-    return SingleChildScrollView(
-      padding: const EdgeInsets.only(bottom: 10),
-      child: Container(
-        padding: const EdgeInsets.all(5),
-        alignment: Alignment.topCenter,
-        child: SizedBox(
-          width: 800,
-          // height: 50,
-          // width: 500,
+    return FittedBox(
+      fit: BoxFit.scaleDown,
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.only(bottom: 10),
+        child: Container(
+          padding: const EdgeInsets.all(5),
+          alignment: Alignment.topCenter,
+          child: SizedBox(
+            width: 800,
+            // height: 50,
+            // width: 500,
       
-          child: SearchAnchor(
-              viewSurfaceTintColor: Colors.white70,
-              viewBackgroundColor: Colors.white70,
-              builder:
-                  (BuildContext context, SearchController controller) {
-                return SearchBar(
-                  controller: controller,
-                  padding: const MaterialStatePropertyAll<EdgeInsets>(
-                      EdgeInsets.symmetric(horizontal: 16.0)),
-                  onTap: () {
-                    controller.openView();
-                  },
-                  onChanged: (_) {
-                    controller.openView();
-                  },
-                  leading: const Icon(Icons.search),
-                );
-              },
-              suggestionsBuilder:
-                  (BuildContext context, SearchController controller) {
-                return List<ListTile>.generate(5, (int index) {
-                  
-                  final String item = 'item $index';
-                  
-                  return ListTile(
-                    
-                    title: Text(item),
-                    
+            child: SearchAnchor(
+                viewSurfaceTintColor: Colors.white70,
+                viewBackgroundColor: Colors.white70,
+                builder: (BuildContext context, SearchController controller) {
+                  return SearchBar(
+                    controller: controller,
+                    padding: const MaterialStatePropertyAll<EdgeInsets>(
+                        EdgeInsets.symmetric(horizontal: 16.0)),
                     onTap: () {
-                      controller.closeView(item);
+                      controller.openView();
                     },
+                    onChanged: (_) {
+                      controller.openView();
+                    },
+                    leading: const Icon(Icons.search),
                   );
-                });
-              }),
+                },
+                suggestionsBuilder:
+                    (BuildContext context, SearchController controller) {
+                  return List<ListTile>.generate(5, (int index) {
+                    final String item = 'item $index';
+      
+                    return ListTile(
+                      title: Text(item),
+                      onTap: () {
+                        controller.closeView(item);
+                      },
+                    );
+                  });
+                }),
+          ),
         ),
       ),
     );
   }
-
-  
 }

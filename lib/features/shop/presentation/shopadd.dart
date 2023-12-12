@@ -23,15 +23,13 @@ class _AddShopPageState extends State<AddShopPage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
-         alignment: Alignment.center,
+        alignment: Alignment.center,
         child: SingleChildScrollView(
-         
           child: SizedBox(
             width: 900,
-              height: 800,
+            height: 800,
             child: Padding(
-               padding: const EdgeInsets.all(30.0),
-            
+              padding: const EdgeInsets.all(30.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -72,7 +70,8 @@ class _AddShopPageState extends State<AddShopPage> {
                             child: Column(
                               children: <Widget>[
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
                                     SizedBox(
                                       width: screenSize.width / 5,
@@ -87,15 +86,16 @@ class _AddShopPageState extends State<AddShopPage> {
                                           // validator: (String? val) {
                                           //   return Guard.againstInvalidEmail(val, 'Email');
                                           // },
-                                          autovalidateMode:
-                                              AutovalidateMode.onUserInteraction,
+                                          autovalidateMode: AutovalidateMode
+                                              .onUserInteraction,
                                           // controller: _emailController,
                                           decoration: InputDecoration(
-                                              prefixIcon: const Icon(Icons.badge_rounded),
+                                              prefixIcon: const Icon(
+                                                  Icons.badge_rounded),
                                               border: InputBorder.none,
                                               hintText: "Shop ID",
-                                              hintStyle:
-                                                  TextStyle(color: Colors.grey[700])),
+                                              hintStyle: TextStyle(
+                                                  color: Colors.grey[700])),
                                         ),
                                       ),
                                     ),
@@ -112,24 +112,25 @@ class _AddShopPageState extends State<AddShopPage> {
                                           // validator: (String? val) {
                                           //   return Guard.againstInvalidEmail(val, 'Email');
                                           // },
-                                          autovalidateMode:
-                                              AutovalidateMode.onUserInteraction,
+                                          autovalidateMode: AutovalidateMode
+                                              .onUserInteraction,
                                           // controller: _emailController,
                                           decoration: InputDecoration(
-                                              prefixIcon: const Icon(Icons.house_rounded),
+                                              prefixIcon: const Icon(
+                                                  Icons.house_rounded),
                                               border: InputBorder.none,
                                               hintText: "Shop name",
-                                              hintStyle:
-                                                  TextStyle(color: Colors.grey[700])),
+                                              hintStyle: TextStyle(
+                                                  color: Colors.grey[700])),
                                         ),
                                       ),
                                     ),
                                   ],
                                 ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    
                                     SizedBox(
                                       width: screenSize.width / 5,
                                       child: Container(
@@ -143,15 +144,16 @@ class _AddShopPageState extends State<AddShopPage> {
                                           // validator: (String? val) {
                                           //   return Guard.againstInvalidEmail(val, 'Email');
                                           // },
-                                          autovalidateMode:
-                                              AutovalidateMode.onUserInteraction,
+                                          autovalidateMode: AutovalidateMode
+                                              .onUserInteraction,
                                           // controller: _emailController,
                                           decoration: InputDecoration(
-                                              prefixIcon: const Icon(Icons.location_on),
+                                              prefixIcon:
+                                                  const Icon(Icons.location_on),
                                               border: InputBorder.none,
                                               hintText: "Address 1",
-                                              hintStyle:
-                                                  TextStyle(color: Colors.grey[700])),
+                                              hintStyle: TextStyle(
+                                                  color: Colors.grey[700])),
                                         ),
                                       ),
                                     ),
@@ -168,24 +170,24 @@ class _AddShopPageState extends State<AddShopPage> {
                                           // validator: (String? val) {
                                           //   return Guard.againstInvalidEmail(val, 'Email');
                                           // },
-                                          autovalidateMode:
-                                              AutovalidateMode.onUserInteraction,
+                                          autovalidateMode: AutovalidateMode
+                                              .onUserInteraction,
                                           // controller: _emailController,
                                           decoration: InputDecoration(
-                                              prefixIcon: const Icon(Icons.location_on_outlined),
+                                              prefixIcon: const Icon(
+                                                  Icons.location_on_outlined),
                                               border: InputBorder.none,
                                               hintText: "Address 2",
-                                              hintStyle:
-                                                  TextStyle(color: Colors.grey[700])),
+                                              hintStyle: TextStyle(
+                                                  color: Colors.grey[700])),
                                         ),
                                       ),
                                     ),
                                   ],
                                 ),
-                                
-                                
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
                                     SizedBox(
                                       width: screenSize.width / 5,
@@ -200,15 +202,16 @@ class _AddShopPageState extends State<AddShopPage> {
                                           // validator: (String? val) {
                                           //   return Guard.againstInvalidEmail(val, 'Email');
                                           // },
-                                          autovalidateMode:
-                                              AutovalidateMode.onUserInteraction,
+                                          autovalidateMode: AutovalidateMode
+                                              .onUserInteraction,
                                           // controller: _emailController,
                                           decoration: InputDecoration(
-                                              prefixIcon: const Icon(Icons.note_add_rounded),
+                                              prefixIcon: const Icon(
+                                                  Icons.note_add_rounded),
                                               border: InputBorder.none,
                                               hintText: "Notes",
-                                              hintStyle:
-                                                  TextStyle(color: Colors.grey[700])),
+                                              hintStyle: TextStyle(
+                                                  color: Colors.grey[700])),
                                         ),
                                       ),
                                     ),
@@ -225,15 +228,16 @@ class _AddShopPageState extends State<AddShopPage> {
                                           // validator: (String? val) {
                                           //   return Guard.againstInvalidEmail(val, 'Email');
                                           // },
-                                          autovalidateMode:
-                                              AutovalidateMode.onUserInteraction,
+                                          autovalidateMode: AutovalidateMode
+                                              .onUserInteraction,
                                           // controller: _emailController,
                                           decoration: InputDecoration(
-                                              prefixIcon: const Icon(Icons.edit_calendar_rounded),
+                                              prefixIcon: const Icon(
+                                                  Icons.edit_calendar_rounded),
                                               border: InputBorder.none,
                                               hintText: "Remark",
-                                              hintStyle:
-                                                  TextStyle(color: Colors.grey[700])),
+                                              hintStyle: TextStyle(
+                                                  color: Colors.grey[700])),
                                         ),
                                       ),
                                     ),
@@ -243,9 +247,8 @@ class _AddShopPageState extends State<AddShopPage> {
                                   ],
                                 ),
                                 SizedBox(
-                                      height: screenSize.height / 20,
-                                    ),
-                                
+                                  height: screenSize.height / 20,
+                                ),
                               ],
                             ),
                           ),
@@ -255,16 +258,38 @@ class _AddShopPageState extends State<AddShopPage> {
                         height: 50,
                       ),
                       SizedBox(
-                        width: screenSize.width/2,
+                        width: screenSize.width / 2,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             ElevatedButton(
-                              
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: const Color.fromRGBO(40, 120, 19, 1),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10))),
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateColor.resolveWith(
+                                    (states) =>
+                                        const Color.fromRGBO(40, 120, 19, 1)),
+                                shape: MaterialStateProperty.resolveWith(
+                                    (states) => RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10))),
+                                overlayColor:
+                                    MaterialStateProperty.resolveWith<Color?>(
+                                  (Set<MaterialState> states) {
+                                    if (states.contains(MaterialState.hovered)) {
+                                      return Colors.red; //<-- SEE HERE
+                                    }
+                                     if (states.contains(MaterialState.pressed)) {
+                                      return const Color.fromRGBO(40, 120, 19, 1); //<-- SEE HERE
+                                    }
+                                    return null; // Defer to the widget's default.
+                                  },
+                                ),
+                              ),
+
+                              // style: ElevatedButton.styleFrom(
+                              //     backgroundColor: const Color.fromRGBO(40, 120, 19, 1),
+
+                              //     shape: RoundedRectangleBorder(
+                              //         borderRadius: BorderRadius.circular(10))),
                               child: SizedBox(
                                 width: screenSize.width / 7,
                                 height: 50,
@@ -280,11 +305,7 @@ class _AddShopPageState extends State<AddShopPage> {
                                   ),
                                 ),
                               ),
-                              onPressed: () {
-                               
-                                
-              
-                              },
+                              onPressed: () {},
                             ),
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
@@ -316,18 +337,15 @@ class _AddShopPageState extends State<AddShopPage> {
                           ],
                         ),
                       ),
-                      
                     ],
                   ),
-                   SizedBox(height: 70,
-                  width: screenSize.width/2.1,
-                   child: const Divider()),
+                  SizedBox(
+                      height: 70,
+                      width: screenSize.width / 2.1,
+                      child: const Divider()),
                 ],
-                
               ),
-              
             ),
-            
           ),
         ),
       ),

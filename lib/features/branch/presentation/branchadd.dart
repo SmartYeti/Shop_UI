@@ -321,11 +321,31 @@ class _AddBranchPageState extends State<AddBranchPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      const Color.fromRGBO(40, 120, 19, 1),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10))),
+                             style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateColor.resolveWith(
+                                              (states) => const Color.fromRGBO(
+                                                  40, 120, 19, 1)),
+                                      shape: MaterialStateProperty.resolveWith(
+                                          (states) => RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10))),
+                                      overlayColor: MaterialStateProperty
+                                          .resolveWith<Color?>(
+                                        (Set<MaterialState> states) {
+                                          if (states.contains(
+                                              MaterialState.hovered)) {
+                                            return Colors.red; //<-- SEE HERE
+                                          }
+                                          if (states.contains(
+                                              MaterialState.pressed)) {
+                                            return const Color.fromRGBO(
+                                                40, 120, 19, 1); //<-- SEE HERE
+                                          }
+                                          return null; // Defer to the widget's default.
+                                        },
+                                      ),
+                                    ),
                               child: SizedBox(
                                 width: screenSize.width / 7,
                                 height: 50,

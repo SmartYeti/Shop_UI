@@ -7,15 +7,15 @@ import 'package:shop_ui/features/shop/domain/models/shop_model.dart';
 
 class ShopRepository {
   Future<Either<String, String>> addShop(AddShopModel addShopModel) async {
-      try {
-          final response = await http.post(Uri.parse('${Config.url}/api/create'),
+    try {
+      final response = await http.post(Uri.parse('${Config.url}/api/create'),
           body: jsonEncode({addShopModel}));
-          //jsonEncode({addShopModel})
+      //jsonEncode({addShopModel})
 
-          return Right(response.body);
-      } catch (e) {
-        return Left(e.toString());
-      }
+      return Right(response.body);
+    } catch (e) {
+      return Left(e.toString());
+    }
   }
 
   Future<Either<String, List<ShopModel>>> getShop() async {
@@ -34,10 +34,13 @@ class ShopRepository {
       final response = await http.get(Uri.parse('${Config.url}/api/index'));
 
       final result = jsonDecode(response.body)[0] as List;
-      List<ShopModel> fresult = result.map(((e) => ShopModel.fromJson(e))).toList();
-      
+      List<ShopModel> fresult =
+          result.map(((e) => ShopModel.fromJson(e))).toList();
+
       return Right(fresult);
-    } catch(e) {
+    } catch (e) {
+      print(e);
+
       return Left(e.toString());
     }
   }
