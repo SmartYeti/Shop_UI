@@ -479,7 +479,7 @@ class _InfoShopPageState extends State<InfoShopPage> {
                                       return Colors.red; //<-- SEE HERE
                                     }
                                      if (states.contains(MaterialState.pressed)) {
-                                      return const Color.fromRGBO(40, 120, 19, 1); //<-- SEE HERE
+                                      return Colors.brown;  //<-- SEE HERE
                                     }
                                     return null; // Defer to the widget's default.
                                   },

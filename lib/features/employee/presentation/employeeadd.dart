@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shop_ui/core/utils/guard.dart';
 // import 'package:shop_ui/features/employee/presentation/employee.dart';
 // import 'package:shop_ui/features/presentation/pages/home.dart';
 
@@ -96,6 +97,10 @@ class _AddEmpPageState extends State<AddEmpPage> {
                                               hintText: "Employee ID",
                                               hintStyle: TextStyle(
                                                   color: Colors.grey[700])),
+                                                  validator: (String? val) {
+                                              return Guard.againstEmptyString(
+                                                  val, 'Employee ID');
+                                            }
                                         ),
                                       ),
                                     ),
@@ -128,6 +133,10 @@ class _AddEmpPageState extends State<AddEmpPage> {
                                               hintText: "Last name",
                                               hintStyle: TextStyle(
                                                   color: Colors.grey[700])),
+                                                  validator: (String? val) {
+                                              return Guard.againstEmptyString(
+                                                  val, 'Last Name');
+                                            }
                                         ),
                                       ),
                                     ),
@@ -154,6 +163,10 @@ class _AddEmpPageState extends State<AddEmpPage> {
                                               hintText: "First name",
                                               hintStyle: TextStyle(
                                                   color: Colors.grey[700])),
+                                                  validator: (String? val) {
+                                              return Guard.againstEmptyString(
+                                                  val, 'First Name');
+                                            }
                                         ),
                                       ),
                                     ),
@@ -180,6 +193,10 @@ class _AddEmpPageState extends State<AddEmpPage> {
                                               hintText: "Middle name",
                                               hintStyle: TextStyle(
                                                   color: Colors.grey[700])),
+                                                  validator: (String? val) {
+                                              return Guard.againstEmptyString(
+                                                  val, 'Middle Name');
+                                            }
                                         ),
                                       ),
                                     ),
@@ -212,6 +229,10 @@ class _AddEmpPageState extends State<AddEmpPage> {
                                               hintText: "Status",
                                               hintStyle: TextStyle(
                                                   color: Colors.grey[700])),
+                                                  validator: (String? val) {
+                                              return Guard.againstEmptyString(
+                                                  val, 'Status');
+                                            }
                                         ),
                                       ),
                                     ),
@@ -238,6 +259,10 @@ class _AddEmpPageState extends State<AddEmpPage> {
                                               hintText: "Date hired",
                                               hintStyle: TextStyle(
                                                   color: Colors.grey[700])),
+                                                  validator: (String? val) {
+                                              return Guard.againstEmptyString(
+                                                  val, 'Date hired');
+                                            }
                                         ),
                                       ),
                                     ),
@@ -264,6 +289,10 @@ class _AddEmpPageState extends State<AddEmpPage> {
                                               hintText: "Salary",
                                               hintStyle: TextStyle(
                                                   color: Colors.grey[700])),
+                                                  validator: (String? val) {
+                                              return Guard.againstEmptyString(
+                                                  val, 'Salary');
+                                            }
                                         ),
                                       ),
                                     ),
@@ -308,6 +337,10 @@ class _AddEmpPageState extends State<AddEmpPage> {
                                                   });
                                                 },
                                               )),
+                                              validator: (String? val) {
+                                              return Guard.againstEmptyString(
+                                                  val, 'Password');
+                                            }
                                         ),
                                       ),
                                     ),
@@ -346,6 +379,10 @@ class _AddEmpPageState extends State<AddEmpPage> {
                                                   });
                                                 },
                                               )),
+                                              validator: (String? val) {
+                                              return Guard.againstEmptyString(
+                                                  val, 'Confirm Password');
+                                            }
                                         ),
                                       ),
                                     ),
@@ -381,6 +418,10 @@ class _AddEmpPageState extends State<AddEmpPage> {
                                               hintText: "Notes",
                                               hintStyle: TextStyle(
                                                   color: Colors.grey[700])),
+                                                  validator: (String? val) {
+                                              return Guard.againstEmptyString(
+                                                  val, 'Notes');
+                                            }
                                         ),
                                       ),
                                     ),
@@ -407,6 +448,10 @@ class _AddEmpPageState extends State<AddEmpPage> {
                                               hintText: "Remark",
                                               hintStyle: TextStyle(
                                                   color: Colors.grey[700])),
+                                                  validator: (String? val) {
+                                              return Guard.againstEmptyString(
+                                                  val, 'Remark');
+                                            }
                                         ),
                                       ),
                                     ),
@@ -448,8 +493,7 @@ class _AddEmpPageState extends State<AddEmpPage> {
                                           }
                                           if (states.contains(
                                               MaterialState.pressed)) {
-                                            return const Color.fromRGBO(
-                                                40, 120, 19, 1); //<-- SEE HERE
+                                            return Colors.brown;  //<-- SEE HERE
                                           }
                                           return null; // Defer to the widget's default.
                                         },

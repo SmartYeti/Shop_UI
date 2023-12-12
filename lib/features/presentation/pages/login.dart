@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_ui/core/dependency_injection/di_container.dart';
+import 'package:shop_ui/core/utils/guard.dart';
 import 'package:shop_ui/features/shop/presentation/home.dart';
 
 class LoginPage extends StatefulWidget {
@@ -86,8 +87,8 @@ class _LoginPageState extends State<LoginPage> {
                               // validator: (String? val) {
                               //   return Guard.againstInvalidEmail(val, 'Email');
                               // },
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
+                              autovalidateMode: 
+                              AutovalidateMode.onUserInteraction,
                               controller: _emailController,
                               decoration: InputDecoration(
                                   prefixIcon: const Icon(Icons.person),
@@ -95,6 +96,9 @@ class _LoginPageState extends State<LoginPage> {
                                   hintText: "Username",
                                   hintStyle:
                                       TextStyle(color: Colors.grey[700])),
+                              validator: (String? val) {
+                              return Guard.againstEmptyString(val, 'Username');
+                            }
                             ),
                           ),
                           Container(
@@ -105,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                               //       val, 'Password');
                               // },
                               autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
+                              AutovalidateMode.onUserInteraction,
                               controller: _passwordController,
                               obscureText: _isObscure,
                               decoration: InputDecoration(
@@ -123,6 +127,9 @@ class _LoginPageState extends State<LoginPage> {
                                       });
                                     },
                                   )),
+                              validator: (String? val) {
+                              return Guard.againstEmptyString(val, 'Password');
+                            }
                             ),
                           )
                         ],
@@ -148,7 +155,7 @@ class _LoginPageState extends State<LoginPage> {
                                       return Colors.red; //<-- SEE HERE
                                     }
                                      if (states.contains(MaterialState.pressed)) {
-                                      return const Color.fromRGBO(40, 120, 19, 1); //<-- SEE HERE
+                                      return Colors.brown; //<-- SEE HERE
                                     }
                                     return null; // Defer to the widget's default.
                                   },

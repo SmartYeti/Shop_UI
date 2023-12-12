@@ -8,7 +8,6 @@ class BranchRepository {
   Future <Either<String, List<BranchModel>>> getBranch(String shopId) async {
     try {
       final response = await http.get(Uri.parse('${Config.url}/api/showBranch/$shopId'));
-      print(response.body);
       if(response.body.isEmpty){
       }
 

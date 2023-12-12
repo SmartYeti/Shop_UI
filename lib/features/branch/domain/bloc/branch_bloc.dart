@@ -13,7 +13,7 @@ class BranchBloc extends Bloc<BranchEvent, BranchState> {
     on<GetBranchEvent>((event, emit) async {
       emit(state.copyWith(stateStatus: StateStatus.loading));
       final Either<String, List<BranchModel>> result = await branchRepository.getBranch(event.shopId);
-      // print(result);
+      
       result.fold((error){
         emit(state.copyWith(
             stateStatus: StateStatus.error, errorMessage: error));

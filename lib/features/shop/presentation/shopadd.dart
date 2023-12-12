@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shop_ui/core/utils/guard.dart';
 // import 'package:shop_ui/features/employee/presentation/employee.dart';
 // import 'package:shop_ui/features/presentation/pages/home.dart';
 
@@ -83,20 +84,23 @@ class _AddShopPageState extends State<AddShopPage> {
                                                     color: Color.fromRGBO(
                                                         40, 120, 19, 1)))),
                                         child: TextFormField(
-                                          // validator: (String? val) {
-                                          //   return Guard.againstInvalidEmail(val, 'Email');
-                                          // },
-                                          autovalidateMode: AutovalidateMode
-                                              .onUserInteraction,
-                                          // controller: _emailController,
-                                          decoration: InputDecoration(
-                                              prefixIcon: const Icon(
-                                                  Icons.badge_rounded),
-                                              border: InputBorder.none,
-                                              hintText: "Shop ID",
-                                              hintStyle: TextStyle(
-                                                  color: Colors.grey[700])),
-                                        ),
+                                            // validator: (String? val) {
+                                            //   return Guard.againstInvalidEmail(val, 'Email');
+                                            // },
+                                            autovalidateMode: AutovalidateMode
+                                                .onUserInteraction,
+                                            // controller: _emailController,
+                                            decoration: InputDecoration(
+                                                prefixIcon: const Icon(
+                                                    Icons.badge_rounded),
+                                                border: InputBorder.none,
+                                                hintText: "Shop ID",
+                                                hintStyle: TextStyle(
+                                                    color: Colors.grey[700])),
+                                            validator: (String? val) {
+                                              return Guard.againstEmptyString(
+                                                  val, 'Shop ID');
+                                            }),
                                       ),
                                     ),
                                     SizedBox(
@@ -109,78 +113,23 @@ class _AddShopPageState extends State<AddShopPage> {
                                                     color: Color.fromRGBO(
                                                         40, 120, 19, 1)))),
                                         child: TextFormField(
-                                          // validator: (String? val) {
-                                          //   return Guard.againstInvalidEmail(val, 'Email');
-                                          // },
-                                          autovalidateMode: AutovalidateMode
-                                              .onUserInteraction,
-                                          // controller: _emailController,
-                                          decoration: InputDecoration(
-                                              prefixIcon: const Icon(
-                                                  Icons.house_rounded),
-                                              border: InputBorder.none,
-                                              hintText: "Shop name",
-                                              hintStyle: TextStyle(
-                                                  color: Colors.grey[700])),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    SizedBox(
-                                      width: screenSize.width / 5,
-                                      child: Container(
-                                        padding: const EdgeInsets.all(8.0),
-                                        decoration: const BoxDecoration(
-                                            border: Border(
-                                                bottom: BorderSide(
-                                                    color: Color.fromRGBO(
-                                                        40, 120, 19, 1)))),
-                                        child: TextFormField(
-                                          // validator: (String? val) {
-                                          //   return Guard.againstInvalidEmail(val, 'Email');
-                                          // },
-                                          autovalidateMode: AutovalidateMode
-                                              .onUserInteraction,
-                                          // controller: _emailController,
-                                          decoration: InputDecoration(
-                                              prefixIcon:
-                                                  const Icon(Icons.location_on),
-                                              border: InputBorder.none,
-                                              hintText: "Address 1",
-                                              hintStyle: TextStyle(
-                                                  color: Colors.grey[700])),
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: screenSize.width / 5,
-                                      child: Container(
-                                        padding: const EdgeInsets.all(8.0),
-                                        decoration: const BoxDecoration(
-                                            border: Border(
-                                                bottom: BorderSide(
-                                                    color: Color.fromRGBO(
-                                                        40, 120, 19, 1)))),
-                                        child: TextFormField(
-                                          // validator: (String? val) {
-                                          //   return Guard.againstInvalidEmail(val, 'Email');
-                                          // },
-                                          autovalidateMode: AutovalidateMode
-                                              .onUserInteraction,
-                                          // controller: _emailController,
-                                          decoration: InputDecoration(
-                                              prefixIcon: const Icon(
-                                                  Icons.location_on_outlined),
-                                              border: InputBorder.none,
-                                              hintText: "Address 2",
-                                              hintStyle: TextStyle(
-                                                  color: Colors.grey[700])),
-                                        ),
+                                            // validator: (String? val) {
+                                            //   return Guard.againstInvalidEmail(val, 'Email');
+                                            // },
+                                            autovalidateMode: AutovalidateMode
+                                                .onUserInteraction,
+                                            // controller: _emailController,
+                                            decoration: InputDecoration(
+                                                prefixIcon: const Icon(
+                                                    Icons.house_rounded),
+                                                border: InputBorder.none,
+                                                hintText: "Shop name",
+                                                hintStyle: TextStyle(
+                                                    color: Colors.grey[700])),
+                                            validator: (String? val) {
+                                              return Guard.againstEmptyString(
+                                                  val, 'Shop Name');
+                                            }),
                                       ),
                                     ),
                                   ],
@@ -199,20 +148,23 @@ class _AddShopPageState extends State<AddShopPage> {
                                                     color: Color.fromRGBO(
                                                         40, 120, 19, 1)))),
                                         child: TextFormField(
-                                          // validator: (String? val) {
-                                          //   return Guard.againstInvalidEmail(val, 'Email');
-                                          // },
-                                          autovalidateMode: AutovalidateMode
-                                              .onUserInteraction,
-                                          // controller: _emailController,
-                                          decoration: InputDecoration(
-                                              prefixIcon: const Icon(
-                                                  Icons.note_add_rounded),
-                                              border: InputBorder.none,
-                                              hintText: "Notes",
-                                              hintStyle: TextStyle(
-                                                  color: Colors.grey[700])),
-                                        ),
+                                            // validator: (String? val) {
+                                            //   return Guard.againstInvalidEmail(val, 'Email');
+                                            // },
+                                            autovalidateMode: AutovalidateMode
+                                                .onUserInteraction,
+                                            // controller: _emailController,
+                                            decoration: InputDecoration(
+                                                prefixIcon: const Icon(
+                                                    Icons.location_on),
+                                                border: InputBorder.none,
+                                                hintText: "Address 1",
+                                                hintStyle: TextStyle(
+                                                    color: Colors.grey[700])),
+                                            validator: (String? val) {
+                                              return Guard.againstEmptyString(
+                                                  val, 'Address 1');
+                                            }),
                                       ),
                                     ),
                                     SizedBox(
@@ -225,20 +177,87 @@ class _AddShopPageState extends State<AddShopPage> {
                                                     color: Color.fromRGBO(
                                                         40, 120, 19, 1)))),
                                         child: TextFormField(
-                                          // validator: (String? val) {
-                                          //   return Guard.againstInvalidEmail(val, 'Email');
-                                          // },
-                                          autovalidateMode: AutovalidateMode
-                                              .onUserInteraction,
-                                          // controller: _emailController,
-                                          decoration: InputDecoration(
-                                              prefixIcon: const Icon(
-                                                  Icons.edit_calendar_rounded),
-                                              border: InputBorder.none,
-                                              hintText: "Remark",
-                                              hintStyle: TextStyle(
-                                                  color: Colors.grey[700])),
-                                        ),
+                                            // validator: (String? val) {
+                                            //   return Guard.againstInvalidEmail(val, 'Email');
+                                            // },
+                                            autovalidateMode: AutovalidateMode
+                                                .onUserInteraction,
+                                            // controller: _emailController,
+                                            decoration: InputDecoration(
+                                                prefixIcon: const Icon(
+                                                    Icons.location_on_outlined),
+                                                border: InputBorder.none,
+                                                hintText: "Address 2",
+                                                hintStyle: TextStyle(
+                                                    color: Colors.grey[700])),
+                                            validator: (String? val) {
+                                              return Guard.againstEmptyString(
+                                                  val, 'Address 2');
+                                            }),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    SizedBox(
+                                      width: screenSize.width / 5,
+                                      child: Container(
+                                        padding: const EdgeInsets.all(8.0),
+                                        decoration: const BoxDecoration(
+                                            border: Border(
+                                                bottom: BorderSide(
+                                                    color: Color.fromRGBO(
+                                                        40, 120, 19, 1)))),
+                                        child: TextFormField(
+                                            // validator: (String? val) {
+                                            //   return Guard.againstInvalidEmail(val, 'Email');
+                                            // },
+                                            autovalidateMode: AutovalidateMode
+                                                .onUserInteraction,
+                                            // controller: _emailController,
+                                            decoration: InputDecoration(
+                                                prefixIcon: const Icon(
+                                                    Icons.note_add_rounded),
+                                                border: InputBorder.none,
+                                                hintText: "Notes",
+                                                hintStyle: TextStyle(
+                                                    color: Colors.grey[700])),
+                                            validator: (String? val) {
+                                              return Guard.againstEmptyString(
+                                                  val, 'Notes');
+                                            }),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: screenSize.width / 5,
+                                      child: Container(
+                                        padding: const EdgeInsets.all(8.0),
+                                        decoration: const BoxDecoration(
+                                            border: Border(
+                                                bottom: BorderSide(
+                                                    color: Color.fromRGBO(
+                                                        40, 120, 19, 1)))),
+                                        child: TextFormField(
+                                            // validator: (String? val) {
+                                            //   return Guard.againstInvalidEmail(val, 'Email');
+                                            // },
+                                            autovalidateMode: AutovalidateMode
+                                                .onUserInteraction,
+                                            // controller: _emailController,
+                                            decoration: InputDecoration(
+                                                prefixIcon: const Icon(Icons
+                                                    .edit_calendar_rounded),
+                                                border: InputBorder.none,
+                                                hintText: "Remark",
+                                                hintStyle: TextStyle(
+                                                    color: Colors.grey[700])),
+                                            validator: (String? val) {
+                                              return Guard.againstEmptyString(
+                                                  val, 'Remark');
+                                            }),
                                       ),
                                     ),
                                     // SizedBox(
@@ -274,11 +293,13 @@ class _AddShopPageState extends State<AddShopPage> {
                                 overlayColor:
                                     MaterialStateProperty.resolveWith<Color?>(
                                   (Set<MaterialState> states) {
-                                    if (states.contains(MaterialState.hovered)) {
+                                    if (states
+                                        .contains(MaterialState.hovered)) {
                                       return Colors.red; //<-- SEE HERE
                                     }
-                                     if (states.contains(MaterialState.pressed)) {
-                                      return const Color.fromRGBO(40, 120, 19, 1); //<-- SEE HERE
+                                    if (states
+                                        .contains(MaterialState.pressed)) {
+                                      return Colors.brown; //<-- SEE HERE
                                     }
                                     return null; // Defer to the widget's default.
                                   },
