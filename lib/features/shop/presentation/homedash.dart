@@ -172,8 +172,16 @@ class _HomeDashState extends State<HomeDash> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) =>
-                                              const ShopPage()));
+                                        builder: (context) =>
+                                          BlocProvider(
+                                            create: (context) =>
+                                                diContainer.branchBloc,
+                                            child: ShopPage(
+                                              shopModel: shoplist,
+                                            ),
+                                      ),
+                                    ),
+                                  );
                                 },
                                 child: Padding(
                                   padding:

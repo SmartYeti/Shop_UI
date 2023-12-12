@@ -39,9 +39,10 @@ class _BranchDashState extends State<BranchDash> {
             child: IconButton(
                 alignment: Alignment.topLeft,
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) =>  
-                        const ShopPage()));
+                    // Navigator.push(context,
+                    //     MaterialPageRoute(builder: (context) =>  
+                    //     const ShopPage()));
+                    Navigator.pop(context);
                   },
                   icon: const Icon(
                     Icons.arrow_back_ios_new_rounded,
@@ -101,7 +102,8 @@ class _BranchDashState extends State<BranchDash> {
                       ),
                       child: GestureDetector(
                         onTap: () {
-                          _displayEmployee(context);
+                          // _displayEmployee(context);
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const EmployeePage()));
                           // Your click event code here
                           // Navigator.push(
                           //     context,

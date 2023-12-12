@@ -12,20 +12,24 @@ class BranchBloc extends Bloc<BranchEvent, BranchState> {
   BranchBloc(BranchRepository branchRepository) : super(BranchState.inital()) {
     on<GetBranchEvent>((event, emit) async {
       emit(state.copyWith(stateStatus: StateStatus.loading));
-      final Either<String, List<BranchModel>> result = await branchRepository.getBranch();
-      
+      final Either<String, List<BranchModel>> result = await branchRepository.getBranch(event.shopId);
+      // print(result);
       result.fold((error){
         emit(state.copyWith(
             stateStatus: StateStatus.error, errorMessage: error));
         emit(state.copyWith(stateStatus: StateStatus.loaded));
+
       }, (branchList){
         if(branchList.isNotEmpty) {
           emit(state.copyWith(
             branchModel: branchList,
             stateStatus: StateStatus.loaded
           ));
+        } else {
+          emit(state.copyWith(isEmpty: true));
         }
       });
+      emit(state.copyWith(stateStatus: StateStatus.loaded));
     });
   }
 }
