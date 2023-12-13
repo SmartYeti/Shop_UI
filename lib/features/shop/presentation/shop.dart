@@ -22,51 +22,141 @@ class _SidebarXExampleAppState extends State<ShopPage> {
   late ShopModel _shopModel;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     _shopModel = widget.shopModel;
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Home',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: primaryColor,
-        canvasColor: canvasColor,
-        scaffoldBackgroundColor: scaffoldBackgroundColor,
-        textTheme: const TextTheme(
-          headlineSmall: TextStyle(
+    final isSmallScreen = MediaQuery.of(context).size.width < 600;
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      key: _key,
+      appBar: isSmallScreen
+          ? AppBar(
+              backgroundColor: canvasColor,
+              title: const Text(''),
+              leading: IconButton(
+                onPressed: () {
+                  // if (!Platform.isAndroid && !Platform.isIOS) {
+                  //   _controller.setExtended(true);
+                  // }
+                  _key.currentState?.openDrawer();
+                },
+                icon: const Icon(Icons.menu),
+              ),
+            )
+          : null,
+      drawer: SidebarX(
+        controller: _controller,
+        theme: SidebarXTheme(
+          margin: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: canvasColor,
+            borderRadius: BorderRadius.circular(20),
+          ),
+          hoverColor: scaffoldBackgroundColor,
+          textStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
+          selectedTextStyle: const TextStyle(color: Colors.white),
+          itemTextPadding: const EdgeInsets.only(left: 30),
+          selectedItemTextPadding: const EdgeInsets.only(left: 30),
+          itemDecoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: canvasColor),
+          ),
+          selectedItemDecoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(
+              color: actionColor.withOpacity(0.37),
+            ),
+            gradient: const LinearGradient(
+              colors: [accentCanvasColor, canvasColor],
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.28),
+                blurRadius: 30,
+              )
+            ],
+          ),
+          iconTheme: IconThemeData(
+            color: Colors.white.withOpacity(0.7),
+            size: 20,
+          ),
+          selectedIconTheme: const IconThemeData(
             color: Colors.white,
-            fontSize: 46,
-            fontWeight: FontWeight.w800,
+            size: 20,
           ),
         ),
-      ),
-      home: Builder(
-        builder: (context) {
-          final isSmallScreen = MediaQuery.of(context).size.width < 600;
-
-          return Scaffold(
-            resizeToAvoidBottomInset: false,
-            key: _key,
-            appBar: isSmallScreen
-                ? AppBar(
-                    backgroundColor: canvasColor,
-                    title: const Text(''),
-                    leading: IconButton(
-                      onPressed: () {
-                        // if (!Platform.isAndroid && !Platform.isIOS) {
-                        //   _controller.setExtended(true);
-                        // }
-                        _key.currentState?.openDrawer();
-                      },
-                      icon: const Icon(Icons.menu),
-                    ),
-                  )
-                : null,
-            drawer: SidebarX(
+        extendedTheme: const SidebarXTheme(
+          width: 200,
+          decoration: BoxDecoration(
+            color: canvasColor,
+          ),
+        ),
+        // footerDivider: divider,
+        headerBuilder: (context, extended) {
+          return const SizedBox(
+            height: 100,
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Icon(
+                Icons.person,
+                color: white,
+              )
+              // Text('Image', selectionColor: Colors.white,)
+              // Image.asset('assets/images/avatar.png')
+              ,
+            ),
+          );
+        },
+        items: [
+          SidebarXItem(
+            icon: Icons.home,
+            label: 'Home',
+            onTap: () {
+              // debugPrint('Home');
+            },
+          ),
+          // SidebarXItem(
+          //   icon: Icons.search,
+          //   label: 'Search',
+          //   onTap: () {
+          //     // debugPrint('Search');
+          //   },
+          // ),
+          const SidebarXItem(
+            icon: Icons.add_circle,
+            label: 'Add',
+          ),
+          const SidebarXItem(
+            icon: Icons.info,
+            label: 'Info',
+          ),
+          const SidebarXItem(
+            icon: Icons.person,
+            label: 'Employees',
+          ),
+        ],
+        footerItems: [
+          SidebarXItem(
+            icon: Icons.power_settings_new_rounded,
+            label: 'Logout',
+            onTap: () {
+              // debugPrint('Logout');
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const LoginPage()));
+            },
+          )
+        ],
+      )
+      // ExampleSidebarX(controller: _controller)
+      ,
+      body: Row(
+        children: [
+          if (!isSmallScreen)
+            SidebarX(
               controller: _controller,
               theme: SidebarXTheme(
                 margin: const EdgeInsets.all(10),
@@ -171,131 +261,15 @@ class _SidebarXExampleAppState extends State<ShopPage> {
                 )
               ],
             )
-            // ExampleSidebarX(controller: _controller)
-            ,
-            body: Row(
-              children: [
-                if (!isSmallScreen)
-                  SidebarX(
-                    controller: _controller,
-                    theme: SidebarXTheme(
-                      margin: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: canvasColor,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      hoverColor: scaffoldBackgroundColor,
-                      textStyle:
-                          TextStyle(color: Colors.white.withOpacity(0.7)),
-                      selectedTextStyle: const TextStyle(color: Colors.white),
-                      itemTextPadding: const EdgeInsets.only(left: 30),
-                      selectedItemTextPadding: const EdgeInsets.only(left: 30),
-                      itemDecoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: canvasColor),
-                      ),
-                      selectedItemDecoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(
-                          color: actionColor.withOpacity(0.37),
-                        ),
-                        gradient: const LinearGradient(
-                          colors: [accentCanvasColor, canvasColor],
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.28),
-                            blurRadius: 30,
-                          )
-                        ],
-                      ),
-                      iconTheme: IconThemeData(
-                        color: Colors.white.withOpacity(0.7),
-                        size: 20,
-                      ),
-                      selectedIconTheme: const IconThemeData(
-                        color: Colors.white,
-                        size: 20,
-                      ),
-                    ),
-                    extendedTheme: const SidebarXTheme(
-                      width: 200,
-                      decoration: BoxDecoration(
-                        color: canvasColor,
-                      ),
-                    ),
-                    // footerDivider: divider,
-                    headerBuilder: (context, extended) {
-                      return const SizedBox(
-                        height: 100,
-                        child: Padding(
-                          padding: EdgeInsets.all(16.0),
-                          child: Icon(
-                            Icons.person,
-                            color: white,
-                          )
-                          // Text('Image', selectionColor: Colors.white,)
-                          // Image.asset('assets/images/avatar.png')
-                          ,
-                        ),
-                      );
-                    },
-                    items: [
-                      SidebarXItem(
-                        icon: Icons.home,
-                        label: 'Home',
-                        onTap: () {
-                          // debugPrint('Home');
-                        },
-                      ),
-                      // SidebarXItem(
-                      //   icon: Icons.search,
-                      //   label: 'Search',
-                      //   onTap: () {
-                      //     // debugPrint('Search');
-                      //   },
-                      // ),
-                      const SidebarXItem(
-                        icon: Icons.add_circle,
-                        label: 'Add',
-                      ),
-                      const SidebarXItem(
-                        icon: Icons.info,
-                        label: 'Info',
-                      ),
-                      const SidebarXItem(
-                      icon: Icons.person,
-                      label: 'Employees',
-                    ),
-                    ],
-                    footerItems: [
-                      SidebarXItem(
-                        icon: Icons.power_settings_new_rounded,
-                        label: 'Logout',
-                        onTap: () {
-                          // debugPrint('Logout');
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const LoginPage()));
-                        },
-                      )
-                    ],
-                  )
-                // ExampleSidebarX(controller: _controller)
-                ,
-                Expanded(
-                  child: Center(
-                    child: _ScreensExample(
-                      controller: _controller,
-                      shopModel: _shopModel,
-                    ),
-                  ),
-                ),
-              ],
+          // ExampleSidebarX(controller: _controller)
+          ,
+          Expanded(
+            child: _ScreensExample(
+              controller: _controller,
+              shopModel: _shopModel,
             ),
-          );
-        },
+          ),
+        ],
       ),
     );
   }
@@ -317,7 +291,7 @@ class _ScreensExample extends StatefulWidget {
 class _ScreensExampleState extends State<_ScreensExample> {
   late ShopModel _shopModel;
   @override
-  void initState(){
+  void initState() {
     super.initState();
     _shopModel = widget.shopModel;
   }
@@ -334,12 +308,13 @@ class _ScreensExampleState extends State<_ScreensExample> {
             return ShopDash(
               shopModel: _shopModel,
             );
-
           case 1:
-            return const AddBranchPage();
+            return AddBranchPage(
+              shopId: _shopModel.shopId,
+            );
           case 2:
             return const InfoShopPage();
-          case 3 :
+          case 3:
             return const BranchDash();
           default:
             return Text(

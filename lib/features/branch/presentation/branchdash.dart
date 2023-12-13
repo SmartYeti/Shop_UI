@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shop_ui/core/dependency_injection/di_container.dart';
 import 'package:shop_ui/features/branch/domain/bloc/branch_bloc.dart';
 import 'package:shop_ui/features/employee/presentation/employee.dart';
 
@@ -15,6 +16,7 @@ class BranchDash extends StatefulWidget {
 
 class _BranchDashState extends State<BranchDash> {
   late BranchBloc _branchBloc;
+  final DIContainer diContainer = DIContainer();
   @override
   void initState() {
     super.initState();
@@ -98,11 +100,11 @@ class _BranchDashState extends State<BranchDash> {
                           ),
                           child: GestureDetector(
                             onTap: () {
-                              Navigator.push(context,
-                              MaterialPageRoute(builder: 
-                              (context) => const EmployeePage()
-                              )
-                              );
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const EmployeePage()));
                               // return const InfoEmployeePage();
                               // _displayEmployee(context);
                               // Your click event code here
@@ -219,44 +221,6 @@ class _BranchDashState extends State<BranchDash> {
                                         ),
                                       ),
                                     ),
-                                    
-                                    // PopupMenuButton<SampleItem>(
-                                    //   initialValue: selectMenu,
-                                    //   // Callback that sets the selected popup menu item.
-                                    //   onSelected: (SampleItem item) {
-                                    //     setState(() {
-                                    //       selectMenu = item;
-                                    //     });
-                                    //   },
-                                    //   itemBuilder: (BuildContext context) =>
-                                    //       <PopupMenuEntry<SampleItem>>[
-                                    //     const PopupMenuItem<SampleItem>(
-                                    //       value: SampleItem.itemOne,
-                                    //       child: Row(
-                                    //         children: [
-                                    //           Icon(Icons.edit),
-                                    //           Text(' Edit'),
-                                    //         ],
-                                    //       ),
-                                    //     ),
-                                    //     PopupMenuItem<SampleItem>(
-                                    //       onTap: () {
-                                    //         setState(() {});
-                                    //       },
-                                    //       value: SampleItem.itemTwo,
-                                    //       child: const Row(
-                                    //         children: [
-                                    //           Icon(Icons.delete),
-                                    //           Text(' Delete'),
-                                    //         ],
-                                    //       ),
-                                    //     ),
-                                    //     // const PopupMenuItem<SampleItem>(
-                                    //     //   value: SampleItem.itemThree,
-                                    //     //   child: Text('Item 3'),
-                                    //     // ),
-                                    //   ],
-                                    // )
                                   ],
                                 ),
                               ),
@@ -280,63 +244,61 @@ class _BranchDashState extends State<BranchDash> {
         context: context,
         builder: (BuildContext context) {
           return Form(
-              child: 
-              AlertDialog(
-                alignment: Alignment.topCenter,
-                title: const Center(
-                  child: Text('Employee Details'),
-                ),
-                content: const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  mainAxisSize: MainAxisSize.min,
+              child: AlertDialog(
+            alignment: Alignment.topCenter,
+            title: const Center(
+              child: Text('Employee Details'),
+            ),
+            content: const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text('Employee ID:'),
-                        Text('Last name:'),
-                        Text('First name:'),
-                        Text('Middle name:'),
-                        Text('Status:'),
-                        Text('Date hired:'),
-                        Text('Salary:'),
-                        Text('Notes:'),
-                        Text('Remark:'),
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text('Emp-1'),
-                        Text('Barriga'),
-                        Text('Rey Mark'),
-                        Text('Cajes'),
-                        Text('Single'),
-                        Text('12-05-2023'),
-                        Text('Php 10,000'),
-                        Text('No Notes'),
-                        Text('Good Remarks'),
-                      ],
-                    ),
+                    Text('Employee ID:'),
+                    Text('Last name:'),
+                    Text('First name:'),
+                    Text('Middle name:'),
+                    Text('Status:'),
+                    Text('Date hired:'),
+                    Text('Salary:'),
+                    Text('Notes:'),
+                    Text('Remark:'),
                   ],
                 ),
-                actions: <Widget>[
-                  Center(
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        alignment: Alignment.centerLeft,
-                        backgroundColor: Colors.black,
-                        foregroundColor: Colors.white,
-                      ),
-                      child: const Text('Okay'),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                  )
-                ],
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text('Emp-1'),
+                    Text('Barriga'),
+                    Text('Rey Mark'),
+                    Text('Cajes'),
+                    Text('Single'),
+                    Text('12-05-2023'),
+                    Text('Php 10,000'),
+                    Text('No Notes'),
+                    Text('Good Remarks'),
+                  ],
+                ),
+              ],
+            ),
+            actions: <Widget>[
+              Center(
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    alignment: Alignment.centerLeft,
+                    backgroundColor: Colors.black,
+                    foregroundColor: Colors.white,
+                  ),
+                  child: const Text('Okay'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
               )
-              );
+            ],
+          ));
         });
   }
 }

@@ -6,13 +6,19 @@ import 'package:shop_ui/features/shop/domain/models/add_shop.model.dart';
 import 'package:shop_ui/features/shop/domain/models/shop_model.dart';
 
 class ShopRepository {
-  Future<Either<String, String>> addShop(AddShopModel addShopModel) async {
+  Future<Either<String, dynamic>> addShop(AddShopModel addShopModel) async {
     try {
-      final response = await http.post(Uri.parse('${Config.url}/api/create'),
-          body: jsonEncode({addShopModel}));
-      //jsonEncode({addShopModel})
+      final response =
+          await http.post(Uri.parse('${Config.url}/api/create'), body: {
+        'shopId': addShopModel.shopId,
+        'shopName': addShopModel.shopName,
+        'address1': addShopModel.address1,
+        'address2': addShopModel.address2,
+        'notes': addShopModel.notes,
+        'remark': addShopModel.remark,
+      });
 
-      return Right(response.body);
+      return Right(response.statusCode);
     } catch (e) {
       return Left(e.toString());
     }

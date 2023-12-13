@@ -6,8 +6,6 @@ class Guard {
     return null;
   }
 
- 
-
   static String? againstEmptyString(dynamic val, String name) {
     final String? isNull = againstNull(val, name);
 
@@ -21,6 +19,29 @@ class Guard {
 // ------
     if (val.isEmpty) {
       return '$name is Empty';
+    }
+    return null;
+  }
+
+  static String? againstEmptyShopId(dynamic val, String name) {
+    final String? isNull = againstNull(val, name);
+
+    if (isNull != null) {
+      return isNull;
+    }
+// -----
+    if (val is! String) {
+      return '$name is not a String';
+    }
+// ------
+    if (val.isEmpty) {
+      return '$name is Empty';
+    }
+    if (val.length > 10) {
+      return 'Maximum length is 10';
+    }
+    if (val.length < 4) {
+      return 'Minimum length is 4';
     }
     return null;
   }

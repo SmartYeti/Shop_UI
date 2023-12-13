@@ -3,12 +3,11 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shop_ui/core/dependency_injection/di_container.dart';
 import 'package:shop_ui/core/enums/enum.dart';
 import 'package:shop_ui/core/global_widgets/snackbar.dart';
 import 'package:shop_ui/features/branch/domain/bloc/branch_bloc.dart';
 import 'package:shop_ui/features/shop/domain/models/shop_model.dart';
-import 'package:shop_ui/features/shop/presentation/home.dart';
-// import 'package:shop_ui/features/shop/presentation/home.dart';
 
 import '../../branch/presentation/branch.dart';
 
@@ -22,9 +21,10 @@ class ShopDash extends StatefulWidget {
 class _ShopDashState extends State<ShopDash> {
   late BranchBloc _branchBloc;
   late ShopModel _shopModel;
+  final DIContainer diContainer = DIContainer();
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     _branchBloc = BlocProvider.of<BranchBloc>(context);
     _shopModel = widget.shopModel;
@@ -37,7 +37,7 @@ class _ShopDashState extends State<ShopDash> {
     return BlocConsumer<BranchBloc, BranchState>(
       listener: _branchListener,
       builder: (context, state) {
-        if(state.stateStatus == StateStatus.loading) {
+        if (state.stateStatus == StateStatus.loading) {
           return const Center(
             child: CircularProgressIndicator(),
           );
@@ -49,17 +49,13 @@ class _ShopDashState extends State<ShopDash> {
               child: IconButton(
                   // alignment: Alignment.topLeft,
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const HomePage()));
+                    Navigator.pop(context);
                   },
                   icon: const Icon(
                     Icons.arrow_back_ios_new_rounded,
                     size: 50,
                     color: Colors.grey,
                   )),
-            ),
-            const SizedBox(
-              height: 100,
             ),
             SingleChildScrollView(
               child: Column(
@@ -83,14 +79,14 @@ class _ShopDashState extends State<ShopDash> {
                     height: 20,
                   ),
                   _searchBar(context),
-    
+
                   SizedBox(
                       height: 20,
                       width: screenSize.width / 1.4,
                       child: const Divider(
                         thickness: 2,
                       )),
-    
+
                   Container(
                     padding: const EdgeInsets.all(3),
                     alignment: Alignment.bottomCenter,
@@ -102,21 +98,20 @@ class _ShopDashState extends State<ShopDash> {
                             PointerDeviceKind.touch,
                             PointerDeviceKind.mouse
                           }),
-                      child: Builder(
-                        builder: (context) {
-                          if(state.isEmpty == true){
-                            return const Center(
-                              child: Text('No Branch to display'),
-                            );
-                          }
-                          return ListView.builder(
-                            physics: const AlwaysScrollableScrollPhysics(),
-                            scrollDirection: Axis.horizontal,
-                            itemCount: state.branchModel.length,
-                            padding: const EdgeInsets.only(top: 10),
-                            itemBuilder: (context, index) {
-                              final shopList = state.branchModel[index];
-                              return SizedBox(
+                      child: Builder(builder: (context) {
+                        if (state.isEmpty == true) {
+                          return const Center(
+                            child: Text('No Branch to display'),
+                          );
+                        }
+                        return ListView.builder(
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          scrollDirection: Axis.horizontal,
+                          itemCount: state.branchModel.length,
+                          padding: const EdgeInsets.only(top: 10),
+                          itemBuilder: (context, index) {
+                            final branchList = state.branchModel[index];
+                            return SizedBox(
                               height: screenSize.height / 10,
                               width: screenSize.width / 3.8,
                               child: Container(
@@ -144,25 +139,32 @@ class _ShopDashState extends State<ShopDash> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => const BranchPage()));
+                                            builder: (context) => BlocProvider(
+                                                  create: (context) =>
+                                                    diContainer.branchBloc,
+                                                  child: const BranchPage(),
+                                                )));
                                   },
                                   child: FittedBox(
                                     fit: BoxFit.scaleDown,
                                     child: Padding(
-                                      padding: const EdgeInsets.fromLTRB(50, 5, 50, 5),
+                                      padding: const EdgeInsets.fromLTRB(
+                                          50, 5, 50, 5),
                                       child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         mainAxisSize: MainAxisSize.max,
                                         children: <Widget>[
                                           Padding(
                                             padding: const EdgeInsets.all(3),
                                             child: Text(
-                                              shopList.branchId,
+                                              branchList.branchId,
                                               style: GoogleFonts.ptSerif(
                                                 textStyle: const TextStyle(
                                                     color: Colors.brown,
                                                     fontSize: 15,
-                                                    fontWeight: FontWeight.bold),
+                                                    fontWeight:
+                                                        FontWeight.bold),
                                               ),
                                               maxLines: 1,
                                               softWrap: false,
@@ -172,12 +174,13 @@ class _ShopDashState extends State<ShopDash> {
                                           Padding(
                                             padding: const EdgeInsets.all(3),
                                             child: Text(
-                                              shopList.branchName,
+                                              branchList.branchName,
                                               style: GoogleFonts.ptSerif(
                                                 textStyle: const TextStyle(
                                                     color: Colors.brown,
                                                     fontSize: 50,
-                                                    fontWeight: FontWeight.bold),
+                                                    fontWeight:
+                                                        FontWeight.bold),
                                               ),
                                               maxLines: 1,
                                               softWrap: false,
@@ -190,12 +193,13 @@ class _ShopDashState extends State<ShopDash> {
                                           Padding(
                                             padding: const EdgeInsets.all(3),
                                             child: Text(
-                                              shopList.address1,
+                                              branchList.address1,
                                               style: GoogleFonts.ptSerif(
                                                 textStyle: const TextStyle(
                                                     color: Colors.brown,
                                                     fontSize: 15,
-                                                    fontWeight: FontWeight.bold),
+                                                    fontWeight:
+                                                        FontWeight.bold),
                                               ),
                                               maxLines: 1,
                                               softWrap: false,
@@ -205,12 +209,13 @@ class _ShopDashState extends State<ShopDash> {
                                           Padding(
                                             padding: const EdgeInsets.all(3),
                                             child: Text(
-                                              shopList.dateOpened,
+                                              branchList.dateOpened,
                                               style: GoogleFonts.ptSerif(
                                                 textStyle: const TextStyle(
                                                     color: Colors.brown,
                                                     fontSize: 15,
-                                                    fontWeight: FontWeight.bold),
+                                                    fontWeight:
+                                                        FontWeight.bold),
                                               ),
                                               maxLines: 1,
                                               softWrap: false,
@@ -224,10 +229,9 @@ class _ShopDashState extends State<ShopDash> {
                                 ),
                               ),
                             );
-                            },
-                          );
-                        }
-                      ),
+                          },
+                        );
+                      }),
                     ),
                   ),
                   // ),
@@ -241,7 +245,7 @@ class _ShopDashState extends State<ShopDash> {
   }
 
   void _branchListener(BuildContext context, BranchState state) {
-    if(state.stateStatus == StateStatus.error) {
+    if (state.stateStatus == StateStatus.error) {
       SnackBarUtils.defualtSnackBar(state.errorMessage, context);
     }
   }
@@ -257,9 +261,6 @@ class _ShopDashState extends State<ShopDash> {
           alignment: Alignment.topCenter,
           child: SizedBox(
             width: 800,
-            // height: 50,
-            // width: 500,
-      
             child: SearchAnchor(
                 viewSurfaceTintColor: Colors.white70,
                 viewBackgroundColor: Colors.white70,
@@ -281,7 +282,7 @@ class _ShopDashState extends State<ShopDash> {
                     (BuildContext context, SearchController controller) {
                   return List<ListTile>.generate(5, (int index) {
                     final String item = 'item $index';
-      
+
                     return ListTile(
                       title: Text(item),
                       onTap: () {

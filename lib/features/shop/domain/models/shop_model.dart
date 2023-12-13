@@ -1,4 +1,4 @@
-class ShopModel{
+class ShopModel {
   final int id;
   final String shopId;
   final String shopName;
@@ -19,13 +19,24 @@ class ShopModel{
 
   factory ShopModel.fromJson(Map<String, dynamic> json) {
     return ShopModel(
-      id: json['id'], 
-      shopId: json['shopId'], 
-      shopName: json['shopName'], 
-      address1: json['address1'], 
-      address2: json['address2'], 
-      notes: json['notes'], 
+      id: json['id'],
+      shopId: json['shopId'],
+      shopName: json['shopName'],
+      address1: json['address1'],
+      address2: json['address2'],
+      notes: json['notes'],
       remark: json['remark'],
     );
+  }
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'shopId': shopId,
+      'shopName': shopName,
+      'address1': address1,
+      'address2': address2,
+      'notes': notes,
+      'remark': remark,
+    };
   }
 }
