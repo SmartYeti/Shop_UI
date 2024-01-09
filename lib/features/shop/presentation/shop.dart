@@ -8,15 +8,15 @@ import 'package:shop_ui/features/shop/presentation/shopdash.dart';
 import 'package:shop_ui/features/shop/presentation/shopinfo.dart';
 import 'package:sidebarx/sidebarx.dart';
 
-class ShopPage extends StatefulWidget {
-  const ShopPage({super.key, required this.shopId});
+class ShopPage1 extends StatefulWidget {
+  const ShopPage1({super.key, required this.shopId});
   final String shopId;
 
   @override
-  State<ShopPage> createState() => _SidebarXExampleAppState();
+  State<ShopPage1> createState() => _SidebarXExampleAppState();
 }
 
-class _SidebarXExampleAppState extends State<ShopPage> {
+class _SidebarXExampleAppState extends State<ShopPage1> {
   final _controller = SidebarXController(selectedIndex: 0, extended: true);
   final _key = GlobalKey<ScaffoldState>();
   late String _shopId;

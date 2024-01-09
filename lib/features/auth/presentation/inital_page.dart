@@ -7,17 +7,18 @@ import 'package:shop_ui/features/auth/domain/bloc/auth_bloc.dart';
 import 'package:shop_ui/features/auth/domain/models/auth_model.dart';
 import 'package:shop_ui/features/auth/presentation/login.dart';
 import 'package:shop_ui/features/branch/domain/bloc/branch_bloc.dart';
-import 'package:shop_ui/features/branch/presentation/branch.dart';
+import 'package:shop_ui/features/shop/presentation/shop_admin.dart';
+import 'package:shop_ui/features/shop/presentation/shop_new.dart';
 
-class InitalPage extends StatefulWidget {
-  const InitalPage({super.key, required this.authModel});
+class InitialPage extends StatefulWidget {
+  const InitialPage({super.key, required this.authModel});
   final AuthModel authModel;
 
   @override
-  State<InitalPage> createState() => _InitalPageState();
+  State<InitialPage> createState() => _InitialPageState();
 }
 
-class _InitalPageState extends State<InitalPage> {
+class _InitialPageState extends State<InitialPage> {
   final DIContainer diContainer = DIContainer();
   late AuthBloc _authBloc;
   late AuthModel _authModel;
@@ -59,9 +60,6 @@ class _InitalPageState extends State<InitalPage> {
       if (_authModel.restriction.isEmpty) {
         print('EMPTY');
         //TODO: Route to display all branches of a shop, use shopId for query
-      } else {
-        //TODO: Route to display shopDrop and display restriction in dropdown menu ** state.authModel!.restriction.length**
-        print('NOT EMPTY');
         SnackBarUtils.successSnackBar('Login Success', context);
         Navigator.push(
           context,
@@ -75,7 +73,27 @@ class _InitalPageState extends State<InitalPage> {
                   create: (context) => diContainer.branchBloc,
                 ),
               ],
-              child: const BranchPage(),
+              child: const ShopAdminPage(),
+            ),
+          ),
+        );
+        return;
+      } else {
+        //TODO: Route to display shopDrop and display restriction in dropdown menu ** state.authModel!.restriction.length**
+        SnackBarUtils.successSnackBar('Login Success', context);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => MultiBlocProvider(
+              providers: [
+                BlocProvider<AuthBloc>(
+                  create: (BuildContext context) => diContainer.authBloc,
+                ),
+                BlocProvider<BranchBloc>(
+                  create: (context) => diContainer.branchBloc,
+                ),
+              ],
+              child: const ShopPage(),
             ),
           ),
         );

@@ -1,3 +1,5 @@
+// import 'package:shop_ui/features/auth/domain/models/auth_restriction.model.dart';
+
 class AuthModel {
   final int id;
   final String shopId;
@@ -7,6 +9,7 @@ class AuthModel {
   final String middleName;
   // final String password;
   final List restriction;
+  // final Restriction restriction;
   final String status;
   final String dateHired;
   final String salary;
@@ -39,6 +42,7 @@ class AuthModel {
       middleName: json['middleName'],
       // password: json['password'],
       restriction: json['restriction'],
+      // restriction: Restriction.fromJson(json['restriction']),
       status: json['status'],
       dateHired: json['dateHired'],
       salary: json['salary'],

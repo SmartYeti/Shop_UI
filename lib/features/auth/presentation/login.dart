@@ -278,7 +278,7 @@ class _LoginPageState extends State<LoginPage> {
           MaterialPageRoute(
             builder: (context) => BlocProvider<AuthBloc>(
               create: (context) => diContainer.authBloc,
-              child: InitalPage(
+              child: InitialPage(
                 authModel: state.authModel!,
               ),
             ),

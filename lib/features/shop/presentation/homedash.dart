@@ -180,7 +180,7 @@ class _HomeDashState extends State<HomeDash> {
                                           builder: (context) => BlocProvider(
                                             create: (context) =>
                                                 diContainer.branchBloc,
-                                            child: ShopPage(
+                                            child: ShopPage1(
                                               shopId: shoplist.shopId,
                                             ),
                                           ),

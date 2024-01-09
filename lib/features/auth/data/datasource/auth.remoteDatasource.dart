@@ -32,6 +32,7 @@ class AuthRemoteDatasource {
     final data = jsonDecode(response.body);
     switch (response.statusCode) {
       case 200:
+        print(data);
         _authlocalDatasource.saveToken(data['authorization']['token']);
         return response;
       case 500:

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:shop_ui/features/branch/presentation/branchadd.dart';
 import 'package:shop_ui/features/shop/presentation/shopdropdown.dart';
@@ -7,8 +6,9 @@ import 'package:shop_ui/features/shop/presentation/shopinfo.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 class ShopAdminPage extends StatefulWidget {
-  const ShopAdminPage({super.key, 
-  // required this.shopModel
+  const ShopAdminPage({
+    super.key,
+    // required this.shopModel
   });
   // final ShopModel shopModel;
 
@@ -38,35 +38,41 @@ class _SidebarXExampleAppState extends State<ShopAdminPage> {
           // isSmallScreen
           //     ?
           AppBar(
-          
-                  backgroundColor: canvasColor,
-                  title: const Text(''),
-                  // leading: IconButton(
-                  //   onPressed: () {
-                  //     // if (!Platform.isAndroid && !Platform.isIOS) {
-                  //     //   _controller.setExtended(true);
-                  //     // }
-                  //     _key.currentState?.openDrawer();
-                  //   },
-                  //   icon: const Icon(Icons.menu, color: white,),
-                  // ),
-                  actions:  [
+        backgroundColor: canvasColor,
+        title: const Text(''),
+        // leading: IconButton(
+        //   onPressed: () {
+        //     // if (!Platform.isAndroid && !Platform.isIOS) {
+        //     //   _controller.setExtended(true);
+        //     // }
+        //     _key.currentState?.openDrawer();
+        //   },
+        //   icon: const Icon(Icons.menu, color: white,),
+        // ),
+        actions: [
           const Tooltip(
-            message: 'Admin',
-            child: Icon(Icons.person, color: white,)),
-          const SizedBox(width: 10,),
-          
-          IconButton(onPressed: (
-          ){
-          
-            // Navigator.push(context, 
-            // MaterialPageRoute(builder: (context) => const LoginPage()));
-          
-          }, icon: const Icon(Icons.power_settings_new_rounded, color: white,)),
-          const SizedBox(width: 20,),
-                  ],
-                  
-                ),
+              message: 'Admin',
+              child: Icon(
+                Icons.person,
+                color: white,
+              )),
+          const SizedBox(
+            width: 10,
+          ),
+          IconButton(
+              onPressed: () {
+                // Navigator.push(context,
+                // MaterialPageRoute(builder: (context) => const LoginPage()));
+              },
+              icon: const Icon(
+                Icons.power_settings_new_rounded,
+                color: white,
+              )),
+          const SizedBox(
+            width: 20,
+          ),
+        ],
+      ),
       // drawer: Sidebar(controller: _controller),
       // : null,
       body: Row(
@@ -120,7 +126,7 @@ class _SidebarXExampleAppState extends State<ShopAdminPage> {
             ),
             // footerDivider: divider,
             headerBuilder: (context, extended) {
-              return  const SizedBox(
+              return const SizedBox(
                 height: 100,
                 child: Padding(
                   padding: EdgeInsets.all(16.0),
@@ -147,7 +153,7 @@ class _SidebarXExampleAppState extends State<ShopAdminPage> {
                   // debugPrint('Home');
                 },
               ),
-              
+
               const SidebarXItem(
                 icon: Icons.add_circle,
                 label: 'Register Branch',
@@ -218,18 +224,18 @@ class _SidebarXExampleAppState extends State<ShopAdminPage> {
       //   ],
       // ),
       bottomNavigationBar: const BottomAppBar(
-              color: canvasColor,
-              surfaceTintColor: canvasColor,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text('Copyright © 2023', style: TextStyle(
-                    color: white
-                  ),),
-                ],
-              ),
-             ),
-      
+        color: canvasColor,
+        surfaceTintColor: canvasColor,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Text(
+              'Copyright © 2023',
+              style: TextStyle(color: white),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -265,8 +271,8 @@ class _ScreensExampleState extends State<_ScreensExample> {
         switch (widget.controller.selectedIndex) {
           case 0:
             return const ShopDrop(
-              // shopModel: _shopModel,
-            );
+                // shopModel: _shopModel,
+                );
           case 1:
             return const AddBranchPage(
               shopId: '',
@@ -320,7 +326,5 @@ const accentCanvasColor = Color.fromRGBO(40, 120, 19, 1);
 const white = Colors.white;
 final actionColor = const Color(0xFF5F5FA7).withOpacity(0.6);
 final divider = Divider(color: white.withOpacity(0.3), height: 1);
-
-
 
 //
